@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM docker.io/openjdk:8-jre
 
 MAINTAINER chris1911@users.noreply.github.com
 
@@ -9,7 +9,7 @@ RUN	echo >> /etc/apt/apt.conf.d/00aptitude 'APT::Install-Recommends "0";' && \
 	apt-get -y update && \
 	apt-get -y install bsdmainutils build-essential ca-certificates cmake file flex \
 			   gawk gettext git less liblzma-dev liblzma5 libncurses5-dev libssl-dev \
-			   openjdk-8-jdk-headless openssh-server p7zip-full pkg-config python \
+			   openssh-server p7zip-full pkg-config python \
 			   subversion sudo unzip vim wget xauth zlib1g-dev
 
 RUN	mkdir -p /var/run/sshd && \
