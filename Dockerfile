@@ -13,7 +13,6 @@ RUN	echo >> /etc/apt/apt.conf.d/00aptitude 'APT::Install-Recommends "0";' && \
 			   subversion sudo unzip vim wget xauth zlib1g-dev
 
 RUN	mkdir -p /var/run/sshd && \
-	locale-gen en_US.UTF-8 && \
 	echo >> /etc/default/locale "LANG=en_US.UTF-8"
 
 RUN	useradd -m jenkinsslave -s /bin/bash
@@ -23,3 +22,4 @@ CMD     /usr/sbin/sshd -D
 
 # allow remote access via ssh-key, only. All other users do not have a pwd set
 # add authorized_keys from host via volume mapping and expose the port
+# ex. docker run -v i<path to .ssh dir containing authorized_keys>:/home/jenkinsslave/.ssh -p <external port>:22 <image name>
